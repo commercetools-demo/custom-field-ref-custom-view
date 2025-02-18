@@ -3,25 +3,26 @@
  */
 const config = {
   name: 'Custom Field Editor',
-  cloudIdentifier: 'gcp-us',
+  cloudIdentifier: '${env:CLOUD_IDENTIFIER}',
   env: {
     development: {
-      initialProjectKey: 'darden-poc',
+      initialProjectKey: '${env:INITIAL_PROJECT_KEY}',
+      hostUriPath: '${env:HOST_URI_PATH}',
     },
     production: {
-      customViewId: 'TODO',
-      url: 'https://my-custom-view.com',
+      customViewId: '${env:CUSTOM_APPLICATION_ID}',
+      url: '${env:APPLICATION_URL}',
     },
   },
   oAuthScopes: {
-    view: ['view_products'],
-    manage: ['manage_products'],
+    view: ['view_products', 'view_key-value-documents', 'view_business-units'],
+    manage: ['manage_products', 'manage_key-value-documents', 'manage_business-units'],
   },
   type: 'CustomPanel',
   typeSettings: {
-    size: 'LARGE',
+    size: 'SMALL',
   },
-  locators: ['products.product_details.general'],
+  locators: ['customers.business_unit_details.general'],
 };
 
 export default config;
