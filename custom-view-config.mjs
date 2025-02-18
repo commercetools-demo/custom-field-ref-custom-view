@@ -10,13 +10,13 @@ const config = {
       hostUriPath: '${env:HOST_URI_PATH}',
     },
     production: {
-      customViewId: '${env:CUSTOM_APPLICATION_ID}',
+      customViewId: '${env:CUSTOM_VIEW_ID}',
       url: '${env:APPLICATION_URL}',
     },
   },
   oAuthScopes: {
-    view: ['view_products', 'view_key-value-documents', 'view_business-units'],
-    manage: ['manage_products', 'manage_key-value-documents', 'manage_business-units'],
+    view: ['view_products', 'view_key_value_documents', 'view_business_units'],
+    manage: ['manage_products', 'manage_key_value_documents', 'manage_business_units'],
   },
   type: 'CustomPanel',
   typeSettings: {

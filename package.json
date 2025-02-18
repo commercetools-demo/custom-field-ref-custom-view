@@ -51,6 +51,7 @@
     "@commercetools-uikit/localized-text-field": "^19.22.3",
     "@commercetools-uikit/localized-text-input": "^19.22.3",
     "@commercetools-uikit/notifications": "^19.22.3",
+    "@commercetools-uikit/number-field": "^19.22.5",
     "@commercetools-uikit/pagination": "^19.22.3",
     "@commercetools-uikit/select-field": "^19.22.3",
     "@commercetools-uikit/spacings": "^19.22.3",
