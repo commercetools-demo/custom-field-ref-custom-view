@@ -38,7 +38,10 @@ export const useCustomObject = () => {
   );
 
   const deleteCustomObject = useCallback(
-    async (container: string, key: string): Promise<CommercetoolsCustomObject> => {
+    async (
+      container: string,
+      key: string
+    ): Promise<CommercetoolsCustomObject> => {
       return dispatchProductRead(
         actions.del({
           mcApiProxyTarget: MC_API_PROXY_TARGETS.COMMERCETOOLS_PLATFORM,

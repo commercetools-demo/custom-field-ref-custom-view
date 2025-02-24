@@ -6,24 +6,26 @@ import RestaurantHoursInfo from '../restaurant-hours-info';
 import Amenities from '../amenities';
 import Spacings from '@commercetools-uikit/spacings';
 import NewRestaurantHoursInfo from '../restaurant-hours-info/new';
+import { useEntity } from '../../hooks/use-entity';
 
 type Props = {
-  businessUnitId: string;
+  entity: string;
+  id: string;
 };
 
 const CustomFieldsWarpper = (props: Props) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
-  const [businessUnit, setBusinessUnit] = useState<any>(null);
+  const [entityObject, setEntityObject] = useState<any>(null);
 
-  const { getBusinessUnitById } = useBusinessUnit();
+  const { getExpandedEntityById } = useEntity();
   const fetch = useCallback(async () => {
     setIsLoading(true);
-    await getBusinessUnitById(props.businessUnitId)
-      .then(setBusinessUnit)
+    await getExpandedEntityById(props.entity, props.id)
+      .then(setEntityObject)
       .catch(setError)
       .finally(() => setIsLoading(false));
-  }, [getBusinessUnitById, props.businessUnitId]);
+  }, [getExpandedEntityById, props.entity, props.id]);
 
   useEffect(() => {
     fetch();
@@ -45,17 +47,18 @@ const CustomFieldsWarpper = (props: Props) => {
     );
   }
 
-  if (!businessUnit) {
+  if (!entityObject) {
     return (
       <ContentNotification type="error">
-        <Text.Body>Business Unit not found</Text.Body>
+        <Text.Body>Entity not found</Text.Body>
       </ContentNotification>
     );
   }
 
   return (
     <Spacings.Stack scale="m">
-      <Text.Headline as="h2">{businessUnit.name}</Text.Headline>
+      Bilah
+      {/* <Text.Headline as="h2">{businessUnit.name}</Text.Headline>
       <RestaurantHoursInfo
         restaurantHoursInfo={businessUnit.custom.fields.restaurantHoursInfo}
         businessUnitId={props.businessUnitId}
@@ -67,7 +70,7 @@ const CustomFieldsWarpper = (props: Props) => {
         businessUnitKey={businessUnit.key}
         businessUnitId={props.businessUnitId}
       />
-      <Amenities amenities={businessUnit.custom.fields.amenities} />
+      <Amenities amenities={businessUnit.custom.fields.amenities} /> */}
     </Spacings.Stack>
   );
 };
